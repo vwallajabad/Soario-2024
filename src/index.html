@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alzheimer's MRI Disease Classifier</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Alzheimer's MRI Disease Classifier</h1>
+    <div class="upload-section">
+        <input type="file" id="imageUpload" accept="image/*" />
+        <button onclick="predict()">Predict</button>
+    </div>
+    <div id="result"></div>
+    <canvas id="canvas" style="display: none;"></canvas>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tensorflow/4.21.0/tf.min.js" integrity="sha512-BLIqLLC6xlUwi6d2hEVzSqt+A4o9xvrd0Q5DDyhMcuOglLqdV1JZD5YIj5n6B87f6lYw/Bx/3WvV1XOB3uuM6w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    <script src="script.js"></script>
+</body>
+</html>
