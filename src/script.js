@@ -1,8 +1,8 @@
 let model;
 
-async function loadModel() {
-    model = await tf.loadLayersModel('model/model.json');
-    console.log('Model loaded successfully');
+async function loadAlzheimerModel() {
+    model = await tf.loadLayersModel('Alzheimer_model/model.json');
+    console.log('Alzheimer model loaded successfully');
 }
 
 function preprocessImage(imageElement) {
@@ -45,5 +45,5 @@ async function predict() {
 }
 
 window.onload = async () => {
-    await loadModel();
+    await loadAlzheimerModel();
 };
