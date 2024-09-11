@@ -16,8 +16,8 @@ function preprocessImage(imageElement) {
     let imageData = ctx.getImageData(0, 0, 128, 128);
     let tensor = tf.browser.fromPixels(imageData, 1);
     
-    tensor = tensor.expandDims(0);  // Add a batch dimension
-    tensor = tensor.div(255.0);     // Normalize to [0, 1]
+    tensor = tensor.expandDims(0);
+    tensor = tensor.div(255.0);
     return tensor;
 }
 
@@ -35,9 +35,12 @@ async function predict() {
         let processedImage = preprocessImage(imageElement);
         let predictions = await model.predict(processedImage);
         let predictedClass = predictions.argMax(-1).dataSync()[0];
-
+        let predictionProbabilities = predictions.dataSync();
+        
         let labels = ["Mild Demented", "Moderate Demented", "Non-Demented", "Very Mild Demented"];
-        document.getElementById('result').innerText = `Prediction: ${labels[predictedClass]}`;
+        let confidence = (predictionProbabilities[predictedClass] * 100).toFixed(2);
+        
+        document.getElementById('result').innerText = `Prediction: ${labels[predictedClass]} (${confidence}%)`;
     };
 }
 
